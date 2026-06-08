@@ -1,91 +1,128 @@
-# Armada Co-Pilot
+# TARAI — Armada Co-Pilot
 
-Kırmızı mercimekte tedarik/fiyat riskini fiyat piyasaya yansımadan önce gösteren karar destek sistemi.
+> Kırmızı mercimek tedarik riskini piyasaya yansımadan önce gösteren yapay zeka destekli karar destek sistemi.
 
 ---
 
-## Kurulum (5 adım)
+## Problem
+
+Kırmızı mercimek alım kararları geç kalındığında maliyetli olur. Fiyat hareketleri piyasaya yansıdığında iş işten geçmiştir — hava olayları, ihracat kısıtlamaları ve piyasa dinamikleri genellikle haftalarca önceden sinyal verir.
+
+## Çözüm
+
+TARAI, 6 farklı menşeden (Kanada, Kazakistan, Rusya, Hindistan, Avustralya, Suriye) eş zamanlı sinyal toplayarak **4, 8 ve 12 haftalık risk ufukları** için 0–100 arası risk skoru üretir. Her skor için AI destekli Türkçe gerekçe ve kaynaklı karar önerisi sunar.
+
+**Sistem öneri verir; nihai kararı insan verir.**
+
+---
+
+## Nasıl Çalışır?
+
+```
+Veri Kaynakları                 Agentlar              Çıktı
+────────────────────────────    ──────────────────    ──────────────────────
+Armada alım geçmişi (XLSX)  →   Fiyat Ajanı       ─┐
+Open-Meteo hava verisi      →   Hava Ajanı        ─┤  Risk Skoru (0-100)
+NewsAPI + Resmî Gazete      →   Haber Ajanı       ─┤  Güven Seviyesi
+World Bank + Mandi          →   Piyasa Ajanı      ─┘  Karar Önerisi
+                                        ↓               AI Gerekçe
+                                Karar Ajanı             Kaynaklı Analiz
+                                        ↓
+                                FastAPI → Next.js UI
+```
+
+**Yöntem:** Kural tabanlı z-skor anomali tespiti + GPT-4o-mini muhakemesi. ML model eğitimi yok.
+
+---
+
+## Özellikler
+
+- **Risk Matrisi** — 7 menşe × 3 zaman ufku (4/8/12 hafta) = 21 hücre
+- **Senaryo Simülasyonu** — "Hindistan ihracatı kapatırsa ne olur?" what-if analizi
+- **Fiyat Analizi** — FOB fiyat trendi + ileriye projeksiyon + Armada vs piyasa karşılaştırması
+- **Canlı Uyarılar** — AI sınıflandırmalı haber ve hava uyarıları
+- **Backtest Modu** — Geçmiş tarihlerle sistemin doğruluğunu test et
+- **Zarif Bozulma** — Herhangi bir veri kaynağı düşse sistem çalışmaya devam eder
+
+---
+
+## Tech Stack
+
+| Katman | Teknoloji |
+|---|---|
+| Backend | Python 3.11, FastAPI, pandas |
+| LLM | OpenAI GPT-4o-mini (birincil), Anthropic Claude Haiku (fallback) |
+| Veri | Armada XLSX + Open-Meteo + NewsAPI + World Bank + Mandi |
+| Frontend | Next.js 14, TypeScript, Tailwind CSS |
+
+---
+
+## Kurulum
 
 **1. Repoyu klonla**
 ```bash
-git clone <repo-url>
+git clone https://github.com/aslanbaris13/Tar.ai.git
 cd Tar.ai
 ```
 
-**2. Sanal ortam oluştur ve bağımlılıkları kur**
+**2. Ortam oluştur**
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate      # Mac/Linux
-# .venv\Scripts\activate       # Windows
-
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
 **3. `.env` dosyasını oluştur**
 ```bash
 cp .env.example .env
-```
-`.env` dosyasını aç ve key'leri doldur:
-```
-OPENAI_API_KEY=sk-proj-...        # platform.openai.com/api-keys
-NEWS_API_KEY=...                  # newsapi.org (ücretsiz)
+# OPENAI_API_KEY ve NEWS_API_KEY alanlarını doldur
 ```
 
-**4. Excel dosyalarını `data/` klasörüne koy**
+**4. Armada Excel dosyasını `data/` klasörüne koy**
+```
+data/2024-2025-2026 Kırmızı Mercimek Alışları.XLSX
+```
 
-Armada'dan iki dosya gerekiyor (repoya commit edilmez):
-- `2024-2025-2026 Kırmızı Mercimek Alışları.XLSX`
-- `Kırmızı Mercimek 2024-2026.xlsx`
-
-> Not: Dosyaları repo kök dizinine koy, `data/` klasörüne gerek yok.
-
-**5. Test et**
+**5. API'yi başlat**
 ```bash
-python3 agents/agent_1_price.py    # Fiyat ajanı
-python3 agents/agent_3_news.py    # Haber ajanı
-python3 agents/agent_4_market.py  # Piyasa ajanı
+uvicorn api.main:app --reload --port 8000
+# http://localhost:8000/docs → Swagger UI
 ```
 
 ---
 
-## Proje Yapısı
+## API Endpoint'leri
+
+| Method | Endpoint | Açıklama |
+|---|---|---|
+| GET | `/risk/all?horizon=4` | Tüm menşelerin risk skoru |
+| GET | `/risk/{origin}` | Tek menşe detayı + AI gerekçe |
+| GET | `/prices/trend` | Haftalık fiyat serisi + forecast |
+| GET | `/alerts` | Aktif uyarılar |
+| POST | `/scenario` | What-if senaryo analizi |
+
+---
+
+## Repo Yapısı
 
 ```
 agents/
-  core/
-    models.py       — Signal dataclass (ortak veri sözleşmesi)
-    scoring.py      — 0-100 risk skoru hesaplama
-    reasoning.py    — GPT-4o-mini ile Türkçe gerekçe üretimi
-  agent_1_price.py  — Armada Excel + World Bank fiyat sinyalleri
-  agent_2_weather.py— Open-Meteo hava/tarım sinyalleri
-  agent_3_news.py   — NewsAPI + Resmî Gazete haber sinyalleri
-  agent_4_market.py — Mandi/MSP + sarı bezelye + WFP piyasa sinyalleri
-  agent_5_decision.py— Orkestrasyon + karar üretimi
-
+  core/            — Signal dataclass, scoring, LLM reasoning
+  agent_1_price.py — Armada XLSX + World Bank
+  agent_2_weather.py — Open-Meteo (4 üretim bölgesi)
+  agent_3_news.py  — NewsAPI + Resmî Gazete RSS
+  agent_4_market.py — Mandi + sarı bezelye + WFP
+  agent_5_decision.py — Orkestrasyon + karar üretimi
 api/
-  main.py           — FastAPI endpoint'leri (/scores, /cell, /scenario, /backtest)
-
-frontend/           — Next.js 14 UI (Oyku)
-
-docs/
-  PRD.md            — Ürün gereksinimleri
+  main.py          — FastAPI (5 endpoint)
+data/              — Armada ham verisi (gitignore)
+docs/              — Teknik dökümanlar
 ```
 
 ---
 
-## API Endpoint'leri (hazırlandıktan sonra)
+## Demo
 
-```
-GET  /scores                   → 7 origin × 3 ufuk skor matrisi
-GET  /cell/{origin}/{horizon}  → Hücre detayı (gerekçe + kaynaklar)
-POST /scenario                 → What-if analizi
-GET  /backtest/{date}          → Geçmiş tarih simülasyonu
-```
+Canlı demo: [https://tarai-lens-pulse.lovable.app](https://tarai-lens-pulse.lovable.app)
 
-API çalıştırmak için:
-```bash
-uvicorn api.main:app --reload --port 8000
-```
-
----
-
+Swagger UI: `http://localhost:8000/docs`
