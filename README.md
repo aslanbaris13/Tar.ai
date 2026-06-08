@@ -121,8 +121,3 @@ docs/              — Teknik dökümanlar
 
 ---
 
-## Demo
-
-Canlı demo: [https://tarai-lens-pulse.lovable.app](https://tarai-lens-pulse.lovable.app)
-
-Swagger UI: `http://localhost:8000/docs`
