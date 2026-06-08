@@ -89,10 +89,3 @@ uvicorn api.main:app --reload --port 8000
 
 ---
 
-## Ekip
-
-| Görev | Kişi |
-|---|---|
-| Agent 1 (Fiyat), Agent 3 (Haber), Agent 4 (Piyasa) | Barış |
-| Agent 2 (Hava), Agent 5 (Karar), API | Aslan |
-| Frontend | Oyku |
