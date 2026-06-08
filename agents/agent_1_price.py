@@ -43,7 +43,7 @@ log = logging.getLogger(__name__)
 
 EXCEL_PATH = os.getenv(
     "ARMADA_EXCEL_PATH",
-    str(Path(__file__).parent.parent / "2024-2025-2026 Kırmızı Mercimek Alışları.XLSX"),
+    str(Path(__file__).parent.parent / "data" / "2024-2025-2026 Kırmızı Mercimek Alışları.XLSX"),
 )
 
 # EUR/USD sabit kur (hafif güncelleme yeterli, gerçek zamanlı gerekmez)
