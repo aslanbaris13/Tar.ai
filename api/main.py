@@ -140,15 +140,19 @@ def _get_price_series() -> dict:
 # ---------------------------------------------------------------------------
 
 @app.get("/risk/all")
-def risk_all(horizon: int = Query(4, description="Zaman ufku (4, 8 veya 12 hafta)")):
+def risk_all(
+    horizon: int = Query(4, description="Zaman ufku (4, 8 veya 12 hafta)"),
+    refresh: bool = Query(False, description="True ise cache atlanır, agentlar yeniden çalışır (~20-30sn)"),
+):
     """
     Tüm originlerin risk skorunu döndürür.
     Oyku → Ana Dashboard grid kartları buradan beslenir.
+    refresh=true → cache bypass, Yenile butonu için.
     """
     if horizon not in (4, 8, 12):
         raise HTTPException(400, "horizon 4, 8 veya 12 olmalı")
 
-    result = _get_full_result()
+    result = _get_full_result(use_cache=not refresh)
     h = _h(horizon)
 
     origins_out = []
@@ -179,7 +183,11 @@ def risk_all(horizon: int = Query(4, description="Zaman ufku (4, 8 veya 12 hafta
 # ---------------------------------------------------------------------------
 
 @app.get("/risk/{origin_code}")
-def risk_detail(origin_code: str, horizon: int = Query(4)):
+def risk_detail(
+    origin_code: str,
+    horizon: int = Query(4),
+    refresh: bool = Query(False, description="True ise cache atlanır"),
+):
     """
     Tek origin detayı: fiyat + hava + haber + AI gerekçe + tüm horizon'lar.
     Oyku → Origin Detay sayfası buradan beslenir.
@@ -190,7 +198,7 @@ def risk_detail(origin_code: str, horizon: int = Query(4)):
     if horizon not in (4, 8, 12):
         raise HTTPException(400, "horizon 4, 8 veya 12 olmalı")
 
-    result = _get_full_result()
+    result = _get_full_result(use_cache=not refresh)
     signals = _get_signals()
     meta = ORIGIN_META[origin_code]
     h = _h(horizon)
