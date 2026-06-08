@@ -172,8 +172,7 @@ Ağırlıklı z-toplam → sigmoid → 0–100. Güven = f(kategori kapsamı × 
 
 ### 🔲 Bugün (8 Haziran)
 - `agent_5_decision.py` — 4 ajanı çağır, skorla, gerekçe üret, cache
-- `api/main.py` — `/scores`, `/cell`, `/scenario`, `/backtest` endpoint'leri
-- Barış: agent_2 + agent_4
+- `api/main.py` — `/scores`, `/cell`, `/scenario`, `/backtest` 
 
 ### 🔲 Yarın (9 Haziran, teslim 19:00)
 - Frontend ↔ API entegrasyonu (Oyku + Aslan)
