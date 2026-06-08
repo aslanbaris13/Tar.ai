@@ -310,11 +310,39 @@ def prices_trend(horizon: int = Query(8)):
         summary["biggest_riser"] = max(changes, key=changes.get)
         summary["biggest_faller"] = min(changes, key=changes.get)
 
+    # Forecast: horizon kadar hafta için linear trend extrapolation
+    # Son 8 haftanın eğimini alıp ileriye projeksiyon
+    forecast_weeks = horizon  # kaç hafta ileri
+    forecast: dict[str, list] = {}
+    for origin, vals in series_sliced.items():
+        clean = [(i, v) for i, v in enumerate(vals) if v is not None]
+        if len(clean) < 4:
+            forecast[origin] = [None] * forecast_weeks
+            continue
+        # Son 8 nokta (veya tüm seri) üzerinden slope hesapla
+        tail = clean[-8:]
+        n = len(tail)
+        xs = [p[0] for p in tail]
+        ys = [p[1] for p in tail]
+        x_mean = sum(xs) / n
+        y_mean = sum(ys) / n
+        num = sum((xs[i] - x_mean) * (ys[i] - y_mean) for i in range(n))
+        den = sum((xs[i] - x_mean) ** 2 for i in range(n))
+        slope = num / den if den != 0 else 0
+        # Aşırı değişimi sınırla: haftalık max ±%1.5
+        max_weekly_change = y_mean * 0.015
+        slope = max(-max_weekly_change, min(max_weekly_change, slope))
+        last_val = ys[-1]
+        fcast = [round(last_val + slope * (i + 1), 1) for i in range(forecast_weeks)]
+        forecast[origin] = fcast
+
     return {
         "horizon": horizon,
         "unit": "USD/MT",
         "dates": dates_slice,
         "series": series_sliced,
+        "forecast": forecast,
+        "forecast_weeks": forecast_weeks,
         "summary": summary,
     }
 
@@ -409,18 +437,43 @@ def scenario(req: ScenarioRequest):
             scenario_signals.append(s)
     scenario_results = {(r.origin, r.horizon): r for r in cs(scenario_signals)}
 
+    # FOB fiyat tahmini için fiyat sinyallerinden son fiyatı al
+    fob_prices: dict[str, float] = {}
+    for s in base_signals:
+        if s.category == "price" and s.note:
+            import re as _re
+            m = _re.search(r"son fiyat (\d+)", s.note)
+            if m:
+                fob_prices[s.origin] = float(m.group(1))
+
     for code, meta in ORIGIN_META.items():
         base = base_results.get((code, "4w"))
         scen_r = scenario_results.get((code, "4w"))
         if not base or not scen_r:
             continue
+
+        # FOB fiyat etkisi: risk skoru farkını fiyat değişimine dönüştür
+        # Her 10 puan risk artışı ≈ %2 fiyat artışı (kaba tahmin)
+        fob_base = fob_prices.get(code)
+        risk_delta = scen_r.score - base.score
+        if fob_base and fob_base > 0:
+            fob_change_pct = risk_delta * 0.2   # 10 puan risk → %2 fiyat artışı
+            fob_after = round(fob_base * (1 + fob_change_pct / 100), 1)
+            fob_delta_pct = round(fob_change_pct, 1)
+        else:
+            fob_after = None
+            fob_delta_pct = None
+
         results_out.append({
             "code": code,
             "name": meta["name"],
             "flag": meta["flag"],
             "before": int(round(base.score)),
             "after": int(round(scen_r.score)),
-            "delta": int(round(scen_r.score - base.score)),
+            "delta": int(round(risk_delta)),
+            "fob_before": fob_base,
+            "fob_after": fob_after,
+            "fob_delta_pct": fob_delta_pct,
         })
 
     # Öneri: en çok etkilenen origin'leri vurgula
