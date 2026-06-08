@@ -203,6 +203,13 @@ cython_debug/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
 
+# Armada — veri dosyaları ve cache
+*.XLSX
+*.xlsx
+data/
+agents/cache/
+.venv/
+
 # Ruff stuff:
 .ruff_cache/
 
