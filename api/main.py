@@ -168,7 +168,7 @@ def risk_all(
             "risk_score": int(round(cell["score"])),
             "decision": _decision(cell["recommendation"]),
             "confidence": cell["confidence"],
-            "reason": cell.get("rationale", "")[:120],
+            "reason": cell.get("rationale", "")[:500],
         })
 
     return {
@@ -198,7 +198,7 @@ def risk_detail(
     if horizon not in (4, 8, 12):
         raise HTTPException(400, "horizon 4, 8 veya 12 olmalı")
 
-    result = _get_full_result(use_cache=not refresh)
+    result = _get_full_result(use_cache=True)
     signals = _get_signals()
     meta = ORIGIN_META[origin_code]
     h = _h(horizon)

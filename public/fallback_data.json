@@ -1,0 +1,422 @@
+{
+  "generated_at": "2026-06-09T08:27:04.516131Z",
+  "as_of": null,
+  "elapsed_seconds": 167.9,
+  "signal_count": 16,
+  "matrix": [
+    {
+      "origin": "CA",
+      "horizon": "4w",
+      "score": 13.9,
+      "confidence": "Orta",
+      "recommendation": "þimdi al",
+      "category_scores": {
+        "price": -1.41,
+        "weather": -0.106,
+        "market": 0.005
+      },
+      "rationale": "Kýrmýzý mercimek fiyatlarý, son 60 günde %35 oranýnda düþüþ göstermiþtir ve mevcut fiyat, dünya bankasý benchmark fiyatýnýn %19.7 altýnda kalmaktadýr. Ayrýca, Saskatchewan'daki yaðýþ miktarý normalin üzerinde seyretmektedir, bu da tarým koþullarýný olumlu etkilemektedir. Bu faktörler, alým için uygun bir zaman olduðunu göstermektedir.",
+      "key_factors": [
+        "Fiyat düþüþü",
+        "Tarým koþullarý"
+      ],
+      "cited_sources": [
+        "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+        "https://open-meteo.com/en/docs#latitude=51.5&longitude=-105.0"
+      ]
+    },
+    {
+      "origin": "CA",
+      "horizon": "8w",
+      "score": 20.3,
+      "confidence": "Orta",
+      "recommendation": "þimdi al",
+      "category_scores": {
+        "price": -0.927,
+        "weather": -0.071,
+        "market": 0.011
+      },
+      "rationale": "Kýrmýzý mercimek fiyatlarý, son 60 günde %35 oranýnda düþüþ göstermiþ ve mevcut fiyat, dünya bankasý benchmark fiyatýnýn %19.7 altýnda kalmaktadýr. Ayrýca, Saskatchewan'daki yaðýþ miktarý normalin üzerinde, bu da tarým koþullarýný olumlu etkilemektedir. Bu faktörler, alým için uygun bir zaman olduðunu göstermektedir.",
+      "key_factors": [
+        "Fiyat düþüþü",
+        "Tarým koþullarý"
+      ],
+      "cited_sources": [
+        "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+        "https://open-meteo.com/en/docs#latitude=51.5&longitude=-105.0"
+      ]
+    },
+    {
+      "origin": "CA",
+      "horizon": "12w",
+      "score": 26.8,
+      "confidence": "Orta",
+      "recommendation": "normal al",
+      "category_scores": {
+        "price": -0.62,
+        "weather": -0.035,
+        "market": 0.018
+      },
+      "rationale": "Kýrmýzý mercimek fiyatlarý son 60 günde %35 oranýnda düþüþ göstermiþtir ve mevcut fiyat, dünya bankasý benchmark fiyatýnýn %19.7 altýnda kalmaktadýr. Ayrýca, Saskatchewan bölgesindeki yaðýþ miktarý normalin üzerinde seyretmektedir, bu da tarým koþullarýný olumlu etkilemektedir. Bu faktörler, orta güvenle normal alým yapýlabileceðini göstermektedir.",
+      "key_factors": [
+        "Fiyat düþüþü",
+        "Yaðýþ miktarýnýn normalin üzerinde olmasý"
+      ],
+      "cited_sources": [
+        "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx",
+        "https://open-meteo.com/en/docs#latitude=51.5&longitude=-105.0"
+      ]
+    },
+    {
+      "origin": "KZ",
+      "horizon": "4w",
+      "score": 64.1,
+      "confidence": "Yüksek",
+      "recommendation": "kýsmi al",
+      "category_scores": {
+        "price": 0.38,
+        "weather": -0.025,
+        "market": 0.0
+      },
+      "rationale": "Kýrmýzý mercimek fiyatlarý Kýrgýzistan'da son 60 günde %25.7 artýþ gösterdi ve mevcut fiyat 620 USD/MT ile ortalamanýn üzerinde. Ayrýca, yüksek güven ile birlikte risk skoru 64.1/100 olarak deðerlendiriliyor, bu da kýsmi alým için uygun bir durum oluþturuyor.",
+      "key_factors": [
+        "Fiyat artýþý",
+        "Yüksek güven"
+      ],
+      "cited_sources": [
+        "C:\\Users\\kjami\\Desktop\\Tar.ai\\data\\2024-2025-2026 Kýrmýzý Mercimek Alýþlarý.XLSX",
+        "https://open-meteo.com/en/docs#latitude=53.2&longitude=63.6",
+        "https://agmarknet.gov.in"
+      ]
+    },
+    {
+      "origin": "KZ",
+      "horizon": "8w",
+      "score": 60.7,
+      "confidence": "Yüksek",
+      "recommendation": "kýsmi al",
+      "category_scores": {
+        "price": 0.213,
+        "weather": -0.017,
+        "market": 0.0
+      },
+      "rationale": "Kýrmýzý mercimek fiyatlarý KZ'de son 60 günde %25.7 artýþ gösterirken, güvenilir bir kaynak olan Hindistan Mandi fiyatý alýnamadýðý için tarihsel ortalama kullanýlmaktadýr. Yaðýþ miktarý normalin üzerinde olsa da, genel piyasa koþullarý ve yüksek risk skoru nedeniyle kýsmi al önerilmektedir.",
+      "key_factors": [
+        "Fiyat artýþý",
+        "Hindistan Mandi fiyatý güven sorunu"
+      ],
+      "cited_sources": [
+        "https://open-meteo.com/en/docs#latitude=53.2&longitude=63.6",
+        "https://agmarknet.gov.in"
+      ]
+    },
+    {
+      "origin": "KZ",
+      "horizon": "12w",
+      "score": 58.3,
+      "confidence": "Yüksek",
+      "recommendation": "kýsmi al",
+      "category_scores": {
+        "price": 0.114,
+        "weather": -0.008,
+        "market": 0.0
+      },
+      "rationale": "Kýrmýzý mercimek fiyatlarý KZ'de son 60 günde %25.7 artýþ gösterirken, güven yüksek seviyede kalmaktadýr. Ancak, Hindistan Mandi fiyatlarýnýn alýnamamasý ve düþük güven seviyesi, piyasa belirsizliðini artýrmaktadýr. Bu nedenle, kýsmi alým önerilmektedir.",
+      "key_factors": [
+        "Fiyat artýþý",
+        "Hindistan Mandi fiyat belirsizliði"
+      ],
+      "cited_sources": [
+        "https://open-meteo.com/en/docs#latitude=53.2&longitude=63.6",
+        "https://agmarknet.gov.in"
+      ]
+    },
+    {
+      "origin": "RU",
+      "horizon": "4w",
+      "score": 14.7,
+      "confidence": "Orta",
+      "recommendation": "þimdi al",
+      "category_scores": {
+        "price": -0.442,
+        "weather": -0.909,
+        "regulation": 0.18
+      },
+      "rationale": "Stavropol bölgesindeki aþýrý yaðýþlar, kýrmýzý mercimek üretimini olumsuz etkileyebilirken, Rusya'nýn yeni AB yaptýrýmlarý arzý daha da kýsýtlayabilir. Ancak, mevcut fiyatlarýn son 60 günde %17.5 düþtüðü göz önüne alýndýðýnda, alým yapmak için uygun bir zaman olabilir.",
+      "key_factors": [
+        "aþýrý yaðýþlar",
+        "yeni AB yaptýrýmlarý",
+        "düþen fiyatlar"
+      ],
+      "cited_sources": [
+        "https://open-meteo.com/en/docs#latitude=45.0&longitude=42.0",
+        "https://www.politico.eu/article/russia-vladimir-putin-shadow-fleet-target-eu-sanctions/"
+      ]
+    },
+    {
+      "origin": "RU",
+      "horizon": "8w",
+      "score": 18.5,
+      "confidence": "Orta",
+      "recommendation": "þimdi al",
+      "category_scores": {
+        "price": -0.247,
+        "weather": -0.606,
+        "regulation": 0.18
+      },
+      "rationale": "Stavropol bölgesinde son 30 günde yaðýþ miktarýnýn normalin çok üzerinde olmasý, ekin dönemini olumsuz etkileyebilir. Ayrýca, Rusya'nýn yeni AB yaptýrýmlarý kýrmýzý mercimek arzýný tehdit edebilir. Fiyatlarýn son 60 günde %17.5 oranýnda düþmesi, alým için uygun bir fýrsat sunmaktadýr.",
+      "key_factors": [
+        "yaðýþ miktarýnýn normalin üzerinde olmasý",
+        "yeni AB yaptýrýmlarý"
+      ],
+      "cited_sources": [
+        "https://open-meteo.com/en/docs#latitude=45.0&longitude=42.0",
+        "https://www.politico.eu/article/russia-vladimir-putin-shadow-fleet-target-eu-sanctions/"
+      ]
+    },
+    {
+      "origin": "RU",
+      "horizon": "12w",
+      "score": 21.0,
+      "confidence": "Orta",
+      "recommendation": "þimdi al",
+      "category_scores": {
+        "price": -0.132,
+        "weather": -0.303,
+        "regulation": 0.108
+      },
+      "rationale": "Stavropol bölgesindeki aþýrý yaðýþlar, kýrmýzý mercimek üretimini olumsuz etkileyebilirken, Rusya'nýn yeni AB yaptýrýmlarý arzý daha da kýsýtlayabilir. Ancak, mevcut fiyatlar son 60 günde düþüþ göstermiþtir, bu da alým fýrsatý sunmaktadýr.",
+      "key_factors": [
+        "aþýrý yaðýþlar",
+        "yeni AB yaptýrýmlarý",
+        "düþen fiyatlar"
+      ],
+      "cited_sources": [
+        "https://open-meteo.com/en/docs#latitude=45.0&longitude=42.0",
+        "https://www.politico.eu/article/russia-vladimir-putin-shadow-fleet-target-eu-sanctions/"
+      ]
+    },
+    {
+      "origin": "AU",
+      "horizon": "4w",
+      "score": 46.4,
+      "confidence": "Orta",
+      "recommendation": "normal al",
+      "category_scores": {
+        "weather": -0.041,
+        "market": 0.005
+      },
+      "rationale": "Avustralya'daki Wimmera bölgesinde son 30 günde yaðýþ miktarý normalin üzerinde, bu da tarýmsal üretimi olumlu etkileyebilir. Ayrýca, sarý bezelye fiyatlarý tarihsel ortalamalara yakýn seyrediyor, bu da piyasa istikrarýný göstermektedir.",
+      "key_factors": [
+        "Yaðýþ miktarý normalin üzerinde",
+        "Sarý bezelye fiyatlarý stabil"
+      ],
+      "cited_sources": [
+        "https://open-meteo.com/en/docs#latitude=-36.5&longitude=142.0",
+        "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx"
+      ]
+    },
+    {
+      "origin": "AU",
+      "horizon": "8w",
+      "score": 48.3,
+      "confidence": "Orta",
+      "recommendation": "normal al",
+      "category_scores": {
+        "weather": -0.027,
+        "market": 0.011
+      },
+      "rationale": "Avustralya'daki Wimmera bölgesinde son 30 günde yaðýþ miktarý normalin üzerinde, bu da tarýmsal üretimi olumlu etkileyebilir. Ayrýca, sarý bezelye fiyatlarý tarihsel ortalamalara yakýn seyrediyor, bu da piyasa istikrarýný göstermektedir.",
+      "key_factors": [
+        "Yaðýþ miktarý normalin üzerinde",
+        "Sarý bezelye fiyatlarý stabil"
+      ],
+      "cited_sources": [
+        "https://open-meteo.com/en/docs#latitude=-36.5&longitude=142.0",
+        "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx"
+      ]
+    },
+    {
+      "origin": "AU",
+      "horizon": "12w",
+      "score": 50.4,
+      "confidence": "Orta",
+      "recommendation": "kýsmi al",
+      "category_scores": {
+        "weather": -0.014,
+        "market": 0.018
+      },
+      "rationale": "Wimmera bölgesinde son 30 günde yaðýþ miktarý normalin üzerinde, bu da tarýmsal üretimi olumlu etkileyebilir. Sarý bezelye fiyatlarý ise tarihsel ortalamalara yakýn seyrediyor, bu da piyasa istikrarýný gösteriyor. Ancak, risk skoru orta seviyede olduðu için dikkatli bir yaklaþým önerilmektedir.",
+      "key_factors": [
+        "Yaðýþ miktarýnýn normalin üzerinde olmasý",
+        "Sarý bezelye fiyatlarýnýn istikrarlý seyri"
+      ],
+      "cited_sources": [
+        "https://open-meteo.com/en/docs#latitude=-36.5&longitude=142.0",
+        "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx"
+      ]
+    },
+    {
+      "origin": "IN",
+      "horizon": "4w",
+      "score": 50.0,
+      "confidence": "Orta",
+      "recommendation": "kýsmi al",
+      "category_scores": {
+        "market": 0.0
+      },
+      "rationale": "Hindistan Mandi fiyatý alýnamadýðý için tarihsel ortalama üzerinden iþlem yapýlmasý, güvenin düþük olduðunu göstermektedir. Bu belirsizlik nedeniyle kýsmi alým yapýlmasý önerilmektedir.",
+      "key_factors": [
+        "Hindistan Mandi fiyatý alýnamamasý",
+        "Tarihsel ortalama kullanýmý"
+      ],
+      "cited_sources": [
+        "https://agmarknet.gov.in"
+      ]
+    },
+    {
+      "origin": "IN",
+      "horizon": "8w",
+      "score": 50.0,
+      "confidence": "Orta",
+      "recommendation": "kýsmi al",
+      "category_scores": {
+        "market": 0.0
+      },
+      "rationale": "Hindistan'daki Mandi fiyatý alýnamadýðý için tarihsel ortalama olan 450 USD/MT üzerinden deðerlendirme yapýlmaktadýr. Ancak güven düzeyi orta olduðu için riskin tam olarak belirlenememesi, kýsmi alým yapýlmasýný öneriyor.",
+      "key_factors": [
+        "Hindistan Mandi fiyatý alýnamamasý",
+        "Tarihsel ortalama kullanýmý"
+      ],
+      "cited_sources": [
+        "https://agmarknet.gov.in"
+      ]
+    },
+    {
+      "origin": "IN",
+      "horizon": "12w",
+      "score": 50.0,
+      "confidence": "Orta",
+      "recommendation": "kýsmi al",
+      "category_scores": {
+        "market": 0.0
+      },
+      "rationale": "Hindistan'daki mercimek fiyatlarý için güvenilir veri alýnamadýðý ve tarihsel ortalamanýn kullanýldýðý göz önüne alýndýðýnda, piyasa belirsizliði artmaktadýr. Bu nedenle, kýsmi alým yapýlmasý önerilmektedir.",
+      "key_factors": [
+        "Hindistan Mandi fiyatý alýnamamasý",
+        "Tarihsel ortalama kullanýmý"
+      ],
+      "cited_sources": [
+        "https://agmarknet.gov.in"
+      ]
+    },
+    {
+      "origin": "TR_MERSIN",
+      "horizon": "4w",
+      "score": 50.0,
+      "confidence": "Orta",
+      "recommendation": "kýsmi al",
+      "category_scores": {
+        "price": 0.0
+      },
+      "rationale": "Mersin bölgesindeki kýrmýzý mercimek fiyatlarý için elde edilen veriler yetersiz ve güven seviyesi orta düzeyde. Bu durum, piyasa koþullarýnýn belirsizliðini artýrmakta ve risk skorunun 50.0/100 olmasý, dikkatli bir yaklaþým gerektirmektedir.",
+      "key_factors": [
+        "veri yetersizliði",
+        "orta güven seviyesi"
+      ],
+      "cited_sources": [
+        "C:\\Users\\kjami\\Desktop\\Tar.ai\\data\\2024-2025-2026 Kýrmýzý Mercimek Alýþlarý.XLSX"
+      ]
+    },
+    {
+      "origin": "TR_MERSIN",
+      "horizon": "8w",
+      "score": 50.0,
+      "confidence": "Orta",
+      "recommendation": "kýsmi al",
+      "category_scores": {
+        "price": 0.0
+      },
+      "rationale": "Mersin bölgesindeki kýrmýzý mercimek fiyat verileri yetersiz ve güven seviyesi orta düzeyde. Bu nedenle, riskin yönetilmesi açýsýndan kýsmi alým yapýlmasý önerilmektedir.",
+      "key_factors": [
+        "veri yetersizliði",
+        "orta güven seviyesi"
+      ],
+      "cited_sources": [
+        "C:\\Users\\kjami\\Desktop\\Tar.ai\\data\\2024-2025-2026 Kýrmýzý Mercimek Alýþlarý.XLSX"
+      ]
+    },
+    {
+      "origin": "TR_MERSIN",
+      "horizon": "12w",
+      "score": 50.0,
+      "confidence": "Orta",
+      "recommendation": "kýsmi al",
+      "category_scores": {
+        "price": 0.0
+      },
+      "rationale": "Mersin bölgesindeki kýrmýzý mercimek fiyatlarý için elde edilen veriler yetersiz ve güven seviyesi orta düzeyde. Bu durum, piyasa koþullarýnýn belirsizliðini artýrmakta ve risk skorunun 50.0/100 olmasý, dikkatli bir yaklaþým gerektirmektedir.",
+      "key_factors": [
+        "veri yetersizliði",
+        "orta güven seviyesi"
+      ],
+      "cited_sources": [
+        "C:\\Users\\kjami\\Desktop\\Tar.ai\\data\\2024-2025-2026 Kýrmýzý Mercimek Alýþlarý.XLSX"
+      ]
+    },
+    {
+      "origin": "SY",
+      "horizon": "4w",
+      "score": 71.6,
+      "confidence": "Orta",
+      "recommendation": "bekle",
+      "category_scores": {
+        "price": 0.308
+      },
+      "rationale": "Suriye'den gelen kýrmýzý mercimek fiyatlarý, ortalamanýn üzerinde bir z-skoru ile seyretmektedir. Ancak, risk skoru 71.6/100 ile orta seviyede kalmakta ve güven düzeyi de orta olarak deðerlendirilmiþtir. Bu nedenle, piyasa koþullarýnýn daha netleþmesi için beklemek en mantýklýsýdýr.",
+      "key_factors": [
+        "Suriye'den gelen fiyat z-skoru +0.61",
+        "Orta risk skoru 71.6/100"
+      ],
+      "cited_sources": [
+        "C:\\Users\\kjami\\Desktop\\Tar.ai\\data\\2024-2025-2026 Kýrmýzý Mercimek Alýþlarý.XLSX"
+      ]
+    },
+    {
+      "origin": "SY",
+      "horizon": "8w",
+      "score": 71.6,
+      "confidence": "Orta",
+      "recommendation": "bekle",
+      "category_scores": {
+        "price": 0.172
+      },
+      "rationale": "Suriye'den gelen kýrmýzý mercimek fiyatlarý, son alýþ tarihine göre ortalamanýn üzerinde bir z-skoru ile iþlem görmekte, bu da fiyatlarýn yükselme potansiyeline iþaret ediyor. Ancak, risk skoru orta seviyede olduðu için dikkatli olunmasý gerektiði belirtiliyor.",
+      "key_factors": [
+        "Fiyat artýþý",
+        "Orta risk seviyesi"
+      ],
+      "cited_sources": [
+        "C:\\Users\\kjami\\Desktop\\Tar.ai\\data\\2024-2025-2026 Kýrmýzý Mercimek Alýþlarý.XLSX"
+      ]
+    },
+    {
+      "origin": "SY",
+      "horizon": "12w",
+      "score": 71.6,
+      "confidence": "Orta",
+      "recommendation": "bekle",
+      "category_scores": {
+        "price": 0.092
+      },
+      "rationale": "Suriye'den gelen kýrmýzý mercimek fiyatlarý son dönemde artýþ göstermiþ olup, z-skoru +0.61 ile ortalamanýn üzerinde bir seviyededir. Ancak, risk skoru 71.6/100 ile orta seviyede kalmakta ve güven düzeyi de orta olarak deðerlendirilmiþtir. Bu nedenle, mevcut durumu izlemek ve beklemek en mantýklý yaklaþým olarak görünmektedir.",
+      "key_factors": [
+        "Suriye'den gelen fiyat artýþý",
+        "Orta risk ve güven düzeyi"
+      ],
+      "cited_sources": [
+        "C:\\Users\\kjami\\Desktop\\Tar.ai\\data\\2024-2025-2026 Kýrmýzý Mercimek Alýþlarý.XLSX"
+      ]
+    }
+  ]
+}
